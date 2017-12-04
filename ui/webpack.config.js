@@ -22,6 +22,11 @@ const extensions = [
   '.html'
 ]
 
+const modules = [
+  'node_modules',
+  'src'
+]
+
 const loaders = [{
   test: /.js$/,
   exclude: /node_modules/,
@@ -58,7 +63,8 @@ module.exports = {
   entry,
   output,
   resolve: {
-    extensions
+    extensions,
+    modules
   },
   module: {
     loaders

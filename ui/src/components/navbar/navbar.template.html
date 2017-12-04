@@ -1,0 +1,20 @@
+<md-nav-bar
+  md-selected-nav-item="navbar.currentNavItem"
+  nav-bar-aria-label="navigation links"
+  md-no-ink-bar="true"
+  layout-wrap>
+    <md-nav-item name="home" md-nav-click="navbar.goto('home')">Home</md-nav-item>
+    <md-nav-item name="flights" md-nav-click="navbar.goto('flights')">Flights</md-nav-item>
+    <md-nav-item name="page2" md-nav-click="navbar.goto('page2')">Page Two</md-nav-item>
+    <span flex></span>
+    <md-nav-item name="profile" md-nav-click="navbar.goto('profile')"
+      ng-show="navbar.isAuthenticated()" aria-label="profile - sometimes invisible">
+      {{navbar.getUsername()}}
+    </md-nav-item>
+    <md-nav-item name="logout" md-nav-click="navbar.logout()"
+      ng-show="navbar.isAuthenticated()">Logout</md-nav-item>
+    <md-nav-item name="signup" md-nav-click="navbar.goto('signup')"
+      ng-show="!navbar.isAuthenticated()">Sign Up</md-nav-item>
+    <md-nav-item name="login" md-nav-click="navbar.goto('login')"
+      ng-show="!navbar.isAuthenticated()">Login</md-nav-item>
+</md-nav-bar>

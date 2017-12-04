@@ -1,0 +1,58 @@
+<div class="profileContainer" layout="row" layout-align="center">
+    <div class="profileCenter" layout="column" layout-align="start" layout-padding flex style="max-width:400px;">
+      <h1 class="title md-display-2">Edit Profile</h1>
+      <form name="profileForm">
+        <md-input-container class="md-block">
+          <label>Username</label>
+          <input id="usr" name="username" ng-model="profile.username" md-maxlength="20" required disabled>
+          <div ng-messages="profileForm.username.$error" role="alert" multiple>
+            <div ng-message="required">Username is required.</div>
+            <div ng-message="md-maxlength">Username must be 20 characters or less.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input type="password" name="password" ng-model="profile.password" minlength="3" required disabled>
+          <div ng-messages="profileForm.password.$error" role="alert" multiple>
+            <div ng-message="required">Password is required.</div>
+            <div ng-message="minlength">Password must be at least 3 characters.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input type="email" name="email" ng-model="profile.email" 
+            ng-pattern="/^.+@.+\..+$/" minlength="10" maxlength="100" required>
+          <div ng-messages="profileForm.email.$error" role="alert" multiple>
+            <div ng-message="required">Email is required.</div>
+            <div ng-message="pattern">Must be a valid email address format.</div>
+            <div ng-message="minlength">Email must be at least 10 characters.</div>
+            <div ng-message="maxlength">Email must be at most 100 characters.</div>
+          </div>
+        </md-input-container>
+        <div layout="row">
+          <md-input-container flex="50">
+            <label>First Name</label>
+            <input name="firstName" ng-model="profile.firstName">
+          </md-input-container>
+          <md-input-container flex="50">
+            <label>Last Name</label>
+            <input name="lastName" ng-model="profile.lastName">
+          </md-input-container>
+        </div>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Phone Number</label>
+            <input name="phone" ng-model="profile.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" 
+              ui-mask="(999) 999-9999" ui-options="{addDefaultPlaceholder:false}"/>
+            <div ng-messages="profileForm.phone.$error" role="alert" multiple>
+              <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+            </div>
+          </md-input-container>
+        <md-button class="md-raised md-primary" ng-disabled="profileForm.$invalid" ng-click="profile.updateProfile()">Submit</md-button>
+        </br>
+        </br>
+        </br>
+        </br>
+        <md-button class="md-raised md-warn" ng-disabled="profileForm.$invalid" ng-click="profile.deleteAccount()">Delete Account</md-button>
+      </form>
+  </div>
+</div>
