@@ -18,12 +18,17 @@ const controller =
     }
 
     login() {
-      this.userService.login({username: this.username, password: this.password})
+      this.userService.login({
+          credentials: {
+            username: this.username, 
+            password: this.password
+          }
+        })
         .then(result => {
           this.state.go('profile')
         })
         .catch(error => {
-          window.alert(`Invalid login for User '${this.username}' - try again, or select 'Sign Up' to create an account.`)
+          window.alert(`Invalid login for User '${this.username}': ${error.data.message} - try again, or select 'Sign Up' to create/reactivate an account.`)
           this.username = ""
           this.password = ""
           document.getElementById("usr").focus()

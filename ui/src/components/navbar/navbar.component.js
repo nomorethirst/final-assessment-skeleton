@@ -25,7 +25,7 @@ const controller = class NavBarController {
   }
 
   getUsername() {
-    return this.userService.isAuthenticated() ? this.userService.user.username : ""
+    return this.userService.isAuthenticated() ? this.userService.user.credentials.username : ""
   }
 
 }

@@ -8,8 +8,8 @@ const controller =
       this.state = $state
       this.userService = userService
       if (this.userService.isAuthenticated()) {
-        this.username = this.userService.credentials.username
-        this.password = this.userService.credentials.password
+        this.username = this.userService.user.credentials.username
+        this.password = this.userService.user.credentials.password
         this.email = this.userService.user.profile.email
         this.firstName =  this.userService.user.profile.firstName
         this.lastName =  this.userService.user.profile.lastName
@@ -23,13 +23,17 @@ const controller =
 
     updateProfile() {
       this.userService.patchUser({
-          username: this.username, 
-          password: this.password
+          credentials: {
+            username: this.username, 
+            password: this.password
+          }
         },{
-          email: this.email,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          phone: this.phone
+          profile: {
+            email: this.email,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            phone: this.phone
+          }
         }
       )
       .then(result => {

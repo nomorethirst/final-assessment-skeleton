@@ -1,5 +1,6 @@
 // Constants
 import apiUrl from './api.url'
+import flightListInterval from './flight.list.interval'
 
 // Modules
 import flightMap from '../map/map.module.js'
@@ -30,10 +31,12 @@ export default
       'ngMessages',
       'ui.router',
       'ui.mask',
+      'ngMdIcons',
 
       flightMap
     ])
     .constant('apiUrl', apiUrl)
+    .constant('flightListInterval', flightListInterval)
     .service('userService', UserService)
     .service('flightService', FlightService)
     .component('flightApp', appComponent)

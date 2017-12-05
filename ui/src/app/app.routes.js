@@ -1,5 +1,5 @@
-export const routing = 
-  ($stateProvider, $urlRouterProvider, $locationProvider) => {
+export function routing
+  ($stateProvider, $urlRouterProvider, $locationProvider) {
     'ngInject'
     const homeState = {
       name: 'home',
@@ -30,10 +30,7 @@ export const routing =
       }
     }
 
-    $locationProvider.html5Mode({
-      enabled: true,
-      requireBase: false
-    })
+    $locationProvider.html5Mode(true)
 
     $urlRouterProvider.otherwise('/')
 

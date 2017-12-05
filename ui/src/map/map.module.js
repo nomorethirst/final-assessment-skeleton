@@ -3,7 +3,7 @@ import mapComponent from './map.component.js'
 import mapService from './map.service'
 
 export default
-  angular
+  ng
     .module('flight.map', ['ngMap'])
     .constant('locations', mapLocations)
     .component('flightMap', mapComponent)

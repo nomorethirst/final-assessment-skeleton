@@ -8,5 +8,6 @@ require('angular-messages')
 require('@uirouter/angularjs')
 require('ngmap')
 require('angular-ui-mask')
+require('angular-material-icons')
 
 require('angular-material/angular-material.css')
