@@ -9,7 +9,7 @@ The intent of this project is to create an interface for users to book flights.
 
 The idea of a flight is greatly simplified from reality.
 
-In this world, the flights will only go to four cities: Memphis, Nashville, Knoxville, Chattanooga.
+In this world, the flights will only go to four cities: Orlando, Miami, Tallahassee, and Jacksonville
 
 A new set of five flights is generated every "day"
 
