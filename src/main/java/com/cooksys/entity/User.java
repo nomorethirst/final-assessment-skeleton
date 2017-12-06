@@ -1,11 +1,12 @@
 package com.cooksys.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,9 @@ public class User {
     private Timestamp joined;
 
     private Boolean deleted = false;
+    
+    @OneToMany
+    private List<Booking> bookings;
 
     public User() {
 	super();
@@ -73,6 +77,14 @@ public class User {
 
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @Override

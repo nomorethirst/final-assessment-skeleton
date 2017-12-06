@@ -35,37 +35,6 @@ export class UserService {
         return this.user !== null
     }
 
-    // usernameAvailable(username) {
-    //     // using localstorage as a mock server
-    //     return JSON.parse(window.localStorage.getItem(username)) ? false : true
-    // }
-
-    // // takes credentials, returns userState object on success
-    // authenticate(credentials) {
-    //     // using localstorage as a mock server
-    //     let userState = JSON.parse(window.localStorage.getItem(credentials.username))
-    //     if (userState && userState.credentials.password === credentials.password) {
-    //         this.logger.log(`userService.authenticate(): user '${credentials.username}' authenticated.`)
-    //         return Promise.resolve(userState)
-    //     } else {
-    //         this.logger.log(`userService.authenticate(): invalid credentials: `, credentials)
-    //         return Promise.reject()
-    //     }
-    // }
-
-    // login(credentials) {
-    //     return this.authenticate(credentials)
-    //         .then(result => {
-    //             this.credentials = result.credentials
-    //             this.user = result.user
-    //             this.saveState()
-    //             return Promise.resolve()
-    //         })
-    //         .catch(error => {
-    //             return Promise.reject()
-    //         })
-    // }
-
     logout() {
     this.user = null
     this.clearState()
@@ -121,8 +90,8 @@ export class UserService {
         })
     }
 
-    patchUser(credentials = this.this.user.credentials, profile) {
-        return this.http.patch(`${this.baseUrl}/users/@${this.user.username}`, {credentials, profile})
+    patchUser(credentials = this.user.credentials, profile) {
+        return this.http.patch(`${this.baseUrl}/users/@${this.user.credentials.username}`, {credentials, profile})
         .then(result => {
             this.logger.log('userService.patchUser result: ', result)
             this.user = result.data
@@ -133,22 +102,25 @@ export class UserService {
             this.logger.log('userService.patchUser error: ', error)
             return Promise.reject(error)
         })
-        // this.user = {
-        //     username: this.credentials.username,
-        //     profile
-        // }
-        // // using localstorage as mock server
-        // let state = {
-        //     credentials: this.credentials,
-        //     user: this.user
-        // }
-        // this.logger.log(`userService.patchUser: updating profile for user '${credentials.username}'`)
-        // window.localStorage.removeItem(credentials.username)
-        // window.localStorage.setItem(credentials.username, JSON.stringify(state))
+    }
 
-        // this.logger.log('userService.patchUser result: ', this.user)
-        // this.saveState()
-        // return Promise.resolve()
+    addBooking(credentials = this.user.credentials, booking) {
+        return this.http({
+            method: 'POST',
+            url: `${this.baseUrl}/users/@${credentials.credentials.username}/booking`, 
+            data: {credentials, booking}
+        })
+        .then(result => {
+            this.logger.log('userService.addBooking result: ', result)
+            this.user.bookings = result.data
+            this.saveState()
+            return Promise.resolve(result)
+        })
+        .catch(error => {
+            this.logger.log('userService.addBooking error: ', error)
+            return Promise.reject(error)
+        })
+
     }
 
 

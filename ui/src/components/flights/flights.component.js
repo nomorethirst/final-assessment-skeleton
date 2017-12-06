@@ -26,7 +26,7 @@ const controller = class FlightsController {
           this.getFlightsPromise = this.timeout(this.updateFlightsOnInterval, this.flightListInterval)
       })
       .catch(error => {
-        this.logger.log('updateFlightsOnInterval: Error getting flights from server')
+        this.logger.log('flights.updateFlightsOnInterval: Error getting flights from server')
       })
   }
 

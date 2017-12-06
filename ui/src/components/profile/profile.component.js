@@ -23,25 +23,20 @@ const controller =
 
     updateProfile() {
       this.userService.patchUser({
-          credentials: {
-            username: this.username, 
-            password: this.password
-          }
+          username: this.username, 
+          password: this.password
         },{
-          profile: {
-            email: this.email,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            phone: this.phone
-          }
-        }
-      )
-      .then(result => {
-        window.alert('Profile updated successfully.')
-      })
-      .catch(error => {
-        window.alert('Error updating profile.')
-      })
+          email: this.email,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          phone: this.phone
+        })
+        .then(result => {
+          window.alert('Profile updated successfully.')
+        })
+        .catch(error => {
+          window.alert('Error updating profile.')
+        })
     }
 
     deleteAccount() {

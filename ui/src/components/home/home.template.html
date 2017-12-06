@@ -1,6 +1,11 @@
 <div class="homeContainer" layout="row" layout-align="center">
-    <div class="homeCenter" layout="column" layout-align="start" layout-padding>
+    <div class="homeCenter" flex-gt-xs="60" layout="column" layout-align="start" layout-padding>
         <h1 class="md-display-3">Flight App</h1>
+        <p class="md-subhead">
+            Welcome to the FastTrack'd Flight Reservation System.  Here you can view current
+            flights, search for a route to your destination, view your route on a map, and 
+            review your current and past itineraries.  Sign up today!
+        </p>
         <p class="md-title">Some md buttons:</p>
         <div class="buttonRow" layout="row" layout-align="space-around" layout-wrap>
             <md-button class="md-raised">Button</md-button>
@@ -19,5 +24,6 @@
                 <div flex="33">Second item in column</div>
             </div>
         </div>
+        <flight-map></flight-map>
     </div>
 </div>

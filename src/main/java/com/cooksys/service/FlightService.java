@@ -1,6 +1,7 @@
 package com.cooksys.service;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,11 +20,14 @@ public class FlightService {
 	
 	public ArrayList<Flight> getDailyFlightList()
 	{
-		return flightList;
+		return (ArrayList<Flight>) flightList
+			.stream()
+			.sorted( (f1, f2) -> f1.getOffset() < f2.getOffset() ? -1 : 1 )
+			.collect(Collectors.toList());
 	}
 	
 	//The fixedDelay parameter determines how often a new day is generated as expressed in milliseconds
-	@Scheduled(fixedDelay=10000)
+	@Scheduled(fixedDelay=60000)
 	private void refreshFlights()
 	{
 		flightList = generator.generateNewFlightList();

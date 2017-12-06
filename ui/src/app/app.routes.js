@@ -29,6 +29,24 @@ export function routing
         flights: /** @ngInject */ flightService => flightService.getFlights()
       }
     }
+    const searchState = {
+      name: 'search',
+      url: '/search',
+      component: 'search',
+      resolve: {
+        flights: /** @ngInject */ flightService => flightService.getFlights()
+      }
+    }
+    const bookingsState = {
+      name: 'bookings',
+      url: '/bookings',
+      component: 'bookings',
+    }
+    const routeMapState = {
+      name: 'routeMap',
+      url: '/routeMap',
+      component: 'routeMap',
+    }
 
     $locationProvider.html5Mode(true)
 
@@ -39,4 +57,7 @@ export function routing
     $stateProvider.state(signupState)
     $stateProvider.state(profileState)
     $stateProvider.state(flightsState)
+    $stateProvider.state(searchState)
+    $stateProvider.state(bookingsState)
+    $stateProvider.state(routeMapState)
 }

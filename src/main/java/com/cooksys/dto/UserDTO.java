@@ -1,7 +1,9 @@
 package com.cooksys.dto;
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import com.cooksys.entity.Booking;
 import com.cooksys.entity.Credentials;
 import com.cooksys.entity.Profile;
 
@@ -12,6 +14,8 @@ public class UserDTO {
     private Profile profile;
 
     private Timestamp joined;
+    
+    private List<Booking> bookings;
 
     public UserDTO() {}
     
@@ -38,6 +42,16 @@ public class UserDTO {
     public void setJoined(Timestamp joined) {
         this.joined = joined;
     }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+    
+    
 
 
 }

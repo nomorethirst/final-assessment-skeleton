@@ -4,7 +4,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
+// const DashboardPlugin = require('webpack-dashboard/plugin')
 const webpackConfig = require('./webpack.config.js')
 
 const devtool = 'source-map'
@@ -64,7 +64,7 @@ const plugins = [
     inject: 'head'
   }),
 
-  new DashboardPlugin(),
+  // new DashboardPlugin(),
 
   new webpack.ProvidePlugin({
     ng: 'angular',

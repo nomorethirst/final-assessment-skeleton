@@ -2,7 +2,7 @@ import templateUrl from './map.component.html'
 
 /* @ngInject */
 class MapController {
-  zoom = 7
+  zoom = 6
   center = [35.5175, -86.5804]
   markers = []
   paths = []
@@ -18,8 +18,10 @@ class MapController {
 
     // add paths manually
     const paths = [
-      [memphis, nashville, '#CC0099'],
-      [nashville, knoxville, '#AA1100']
+      [memphis, nashville, 'aqua'],
+      [nashville, knoxville, 'blueviolet']
+      // [memphis, nashville, '#CC0099'],
+      // [nashville, knoxville, '#AA1100']
     ]
 
     paths.forEach(args => this.addPath(...args))
@@ -27,7 +29,8 @@ class MapController {
     // add path from webservice
     $map.getMarkerByCityName('Chattanooga')
       .then(chattanooga => {
-        this.addPath(knoxville, chattanooga, '#FF3388')
+        // this.addPath(knoxville, chattanooga, '#FF3388')
+        this.addPath(knoxville, chattanooga, 'fuchsia')
       })
   }
 

@@ -1,7 +1,16 @@
 package com.cooksys.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Flight {
 	
+    	@Id
+    	@GeneratedValue
+    	Integer id;
+    	
 	//Name of city where flight originates
 	private String origin;
 	

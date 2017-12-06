@@ -1,0 +1,27 @@
+<div class="searchContainer" layout="row" layout-align="center">
+    <div class="searchCenter" layout="column" layout-align="start center" layout-padding>
+        <h1 class="md-display-3">Bookings</h1>
+        <md-list>
+            <md-list-item ng-repeat="booking in bookings.bookings" layout="row" layout-xs="column">
+                <div class="md-avatar">{{$index + 1}}</div>
+                <div layout="column" layout-padding>
+                    <div class="flight" ng-repeat="flight in booking">
+                        <div layout="row" layout-align="space-between">
+                            <span>{{ flight.origin }}</span>
+                            <ng-md-icon icon="arrow_forward" style="fill:rgba(255,255,255,1.0);"></ng-md-icon>
+                            <!-- <span>&emsp;->&emsp;</span> -->
+                            <span>{{ flight.destination }}</span>
+                        </div>
+                        <div layout="row" layout-align="space-between start">
+                        <p>( {{ flight.offset }} )</p>
+                        <p>( {{ flight.offset + flight.flightTime }} )</p>
+                        </div>
+                    </div>
+                </div>
+                <div layout="column">
+                    <md-button class="md-raised md-secondary">View on Map</md-button>
+                </div>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>

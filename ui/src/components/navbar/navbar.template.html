@@ -3,13 +3,26 @@
   nav-bar-aria-label="navigation links"
   md-no-ink-bar="true"
   layout-wrap>
+
+    <!-- LEFTT NAVBAR -->
     <md-nav-item name="home" md-nav-click="navbar.goto('home')">Home</md-nav-item>
     <md-nav-item name="flights" md-nav-click="navbar.goto('flights')">
       <!-- <ng-md-icon icon="airplanemode_on"></ng-md-icon> -->
       Flights
     </md-nav-item>
-    <md-nav-item name="page2" md-nav-click="navbar.goto('page2')">Page Two</md-nav-item>
+    <md-nav-item name="search" md-nav-click="navbar.goto('search')"
+      ng-show="navbar.isAuthenticated()" aria-label="search">
+      Search
+    </md-nav-item>
+    <md-nav-item name="bookings" md-nav-click="navbar.goto('bookings')"
+      ng-show="navbar.isAuthenticated()" aria-label="bookings">
+      Bookings
+    </md-nav-item>
+
+    <!-- SPACER -->
     <span flex></span>
+  
+    <!-- RIGHT NAVBAR -->
     <md-nav-item name="profile" md-nav-click="navbar.goto('profile')"
       ng-show="navbar.isAuthenticated()" aria-label="profile - sometimes invisible">
       <!-- <ng-md-icon icon="person"></ng-md-icon> -->

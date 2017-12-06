@@ -13,6 +13,10 @@ import { Login } from '../components/login/login.component.js'
 import { Signup } from '../components/signup/signup.component.js'
 import { Profile } from '../components/profile/profile.component.js'
 import { Flights } from '../components/flights/flights.component.js'
+import { Search } from '../components/search/search.component.js'
+import { CitySearchInput } from '../components/citySearchInput/citySearchInput.component.js'
+import { Bookings } from '../components/bookings/bookings.component.js'
+import { RouteMap } from '../components/routeMap/routeMap.component.js'
 
 // Services
 import { UserService } from '../services/user.service'
@@ -46,6 +50,10 @@ export default
     .component('signup', Signup)
     .component('profile', Profile)
     .component('flights', Flights)
+    .component('search', Search)
+    .component('citySearchInput', CitySearchInput)
+    .component('bookings', Bookings)
+    .component('routeMap', RouteMap)
     .config(config)
     .config(routing)
     .name
