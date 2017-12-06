@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.cooksys.pojo.Flight;
-
 @Entity
 public class Booking {
     

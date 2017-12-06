@@ -2,5 +2,23 @@
     <div class="routeMapCenter" layout="column" layout-align="start" layout-padding>
         <h1 class="md-display-3">Route Map</h1>
         <flight-map></flight-map>
+        <div layout="column" layout-padding>
+                <div class="flight" ng-repeat="flight in routeMap.route">
+                    <div layout="row" layout-align="space-between">
+                        <span>{{ flight.origin }}</span>
+                        <ng-md-icon icon="arrow_forward" size="18" style="fill:rgba(255,255,255,1.0);"></ng-md-icon>
+                        <!-- <span>&emsp;->&emsp;</span> -->
+                        <span>{{ flight.destination }}</span>
+                    </div>
+                    <div layout="row" layout-align="space-between start">
+                    <p>( {{ flight.offset }} )</p>
+                    <p>( {{ flight.offset + flight.flightTime }} )</p>
+                    </div>
+                </div>
+                <div layout="column" layout-align="start center">
+                <p>Total Flight Time: {{ routeMap.totalFlight }} </p>
+                <p>Total Layover Time: {{ routeMap.totalLayover }}</p>
+                </div>
+            </div>
     </div>
 </div>

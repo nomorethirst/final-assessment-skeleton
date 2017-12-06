@@ -25,8 +25,9 @@ const controller = class CitySearchInputController {
       }
     ]
     this.noCache = true
-    this.logger.log($attrs)
-    this.placeholder = $attrs.placeholder
+    // this.logger.log($attrs)
+    // this.placeholder = $attrs.placeholder
+    // this.logger.log(this.placeholder)
   }
 
   querySearch (query) {
@@ -38,6 +39,11 @@ const controller = class CitySearchInputController {
   }
 
   selectedItemChange(item) {
+    if (item === undefined) {
+      this.dirty = false
+    } else {
+      this.dirty = true
+    }
     this.logger.info('Item changed to ' + JSON.stringify(item))
   }
 
@@ -69,6 +75,8 @@ export const CitySearchInput = {
   templateUrl,
   controllerAs: 'citySearchInput',
   bindings: {
-    placeholder: '@'
+    placeholder: '@',
+    input: '=',
+    dirty: '='
   }
 }

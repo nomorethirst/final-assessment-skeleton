@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.stereotype.Component;
 
+import com.cooksys.entity.Flight;
 import com.cooksys.pojo.Cities;
-import com.cooksys.pojo.Flight;
 
 @Component
 public class FlightGenerator {
@@ -27,9 +27,9 @@ public class FlightGenerator {
 			String origin = Cities.values()[originIndex].getName();
 			String destination = Cities.values()[destinationIndex].getName();
 			int flightTime = ThreadLocalRandom.current().nextInt(1, 4);
-			int offset = ThreadLocalRandom.current().nextInt(0, 10);
+			int startTime = ThreadLocalRandom.current().nextInt(0, 10);
 
-			Flight f = new Flight(origin, destination, flightTime, offset);
+			Flight f = new Flight(origin, destination, flightTime, startTime);
 
 			result.add(f);
 		}

@@ -46,6 +46,9 @@ export function routing
       name: 'routeMap',
       url: '/routeMap',
       component: 'routeMap',
+      params: {
+        route: null
+      }
     }
 
     $locationProvider.html5Mode(true)

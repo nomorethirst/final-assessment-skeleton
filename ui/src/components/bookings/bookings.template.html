@@ -3,13 +3,14 @@
         <h1 class="md-display-3">Bookings</h1>
         <md-list>
             <md-list-item ng-repeat="booking in bookings.bookings" layout="row" layout-xs="column">
-                <div class="md-avatar">{{$index + 1}}</div>
+                <div class="md-avatar">{{ booking.id }}</div>
                 <div layout="column" layout-padding>
-                    <div class="flight" ng-repeat="flight in booking">
+                    <div class="flight" ng-repeat="flight in booking.flights">
                         <div layout="row" layout-align="space-between">
                             <span>{{ flight.origin }}</span>
+                            <span>&emsp;</span>
                             <ng-md-icon icon="arrow_forward" style="fill:rgba(255,255,255,1.0);"></ng-md-icon>
-                            <!-- <span>&emsp;->&emsp;</span> -->
+                            <span>&emsp;</span>
                             <span>{{ flight.destination }}</span>
                         </div>
                         <div layout="row" layout-align="space-between start">
@@ -19,7 +20,7 @@
                     </div>
                 </div>
                 <div layout="column">
-                    <md-button class="md-raised md-secondary">View on Map</md-button>
+                    <md-button class="md-raised md-secondary" ng-click="bookings.viewMap(booking)">View on Map</md-button>
                 </div>
             </md-list-item>
         </md-list>

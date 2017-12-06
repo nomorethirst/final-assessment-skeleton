@@ -1,14 +1,15 @@
 <md-autocomplete
     ng-disabled="citySearchInput.isDisabled"
     md-no-cache="citySearchInput.noCache"
-    md-selected-item="citySearchInput.selectedItem"
+    md-selected-item="citySearchInput.input"
     md-search-text-change="citySearchInput.searchTextChange(citySearchInput.searchText)"
     md-search-text="citySearchInput.searchText"
     md-selected-item-change="citySearchInput.selectedItemChange(item)"
     md-items="item in citySearchInput.querySearch(citySearchInput.searchText)"
     md-item-text="item.display"
     md-min-length="0"
-    placeholder="citySearchInput.placeholder">
+    placeholder="{{citySearchInput.placeholder}}">
+    <!-- ng-model="citySearchInput.arriveBind"> -->
     <md-item-template>
         <span md-highlight-text="citySearchInput.searchText" md-highlight-flags="^i">{{item.display}}</span>
     </md-item-template>

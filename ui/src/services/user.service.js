@@ -104,15 +104,23 @@ export class UserService {
         })
     }
 
-    addBooking(credentials = this.user.credentials, booking) {
+    addBooking(route, credentials = this.user.credentials) {
+        let requestbody = {
+            credentials: credentials,
+            booking: {
+                flights: route
+            }
+        }
+        // this.logger.log('userService.addBooking sending: ', requestbody)
         return this.http({
             method: 'POST',
-            url: `${this.baseUrl}/users/@${credentials.credentials.username}/booking`, 
-            data: {credentials, booking}
+            url: `${this.baseUrl}/users/@${credentials.username}/booking`, 
+            data: requestbody
         })
         .then(result => {
             this.logger.log('userService.addBooking result: ', result)
             this.user.bookings = result.data
+            this.logger.log( 'user = ', this.user)
             this.saveState()
             return Promise.resolve(result)
         })

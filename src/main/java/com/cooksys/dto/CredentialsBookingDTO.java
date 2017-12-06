@@ -1,13 +1,12 @@
 package com.cooksys.dto;
 
-import com.cooksys.entity.Booking;
 import com.cooksys.entity.Credentials;
 
 public class CredentialsBookingDTO {
 
     private Credentials credentials;
 
-    private Booking booking;
+    private BookingDTO booking;
 
     public Credentials getCredentials() {
         return credentials;
@@ -17,12 +16,17 @@ public class CredentialsBookingDTO {
         this.credentials = credentials;
     }
 
-    public Booking getBooking() {
+    public BookingDTO getBooking() {
         return booking;
     }
 
-    public void setBooking(Booking booking) {
+    public void setBooking(BookingDTO booking) {
         this.booking = booking;
+    }
+
+    @Override
+    public String toString() {
+	return "CredentialsBookingDTO [credentials=" + credentials + ", booking=" + booking + "]";
     }
 
     

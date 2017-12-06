@@ -11,15 +11,19 @@ import org.springframework.stereotype.Service;
 
 import com.cooksys.dto.CredentialsBookingDTO;
 import com.cooksys.dto.CredentialsProfileDTO;
+import com.cooksys.dto.FlightDTO;
 import com.cooksys.dto.UserDTO;
 import com.cooksys.entity.Booking;
 import com.cooksys.entity.Credentials;
+import com.cooksys.entity.Flight;
 import com.cooksys.entity.Profile;
 import com.cooksys.entity.User;
 import com.cooksys.exceptions.AlreadyExistsException;
 import com.cooksys.exceptions.InvalidCredentialsException;
 import com.cooksys.exceptions.NotExistsException;
 import com.cooksys.mapper.UserMapper;
+import com.cooksys.repository.BookingRepository;
+import com.cooksys.repository.FlightRepository;
 import com.cooksys.repository.UserRepository;
 
 @Service
@@ -28,11 +32,17 @@ public class UserService {
     private UserRepository userRepository;
 
     private UserMapper userMapper;
+    
+    private BookingRepository bookingRepository;
+    
+    private FlightRepository flightRepository;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, BookingRepository bookingRepository, FlightRepository flightRepository) {
         super();
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.bookingRepository = bookingRepository;
+        this.flightRepository = flightRepository;
     }
 
     public List<UserDTO> getAllActiveUsers() {
@@ -143,7 +153,15 @@ public class UserService {
     public List<Booking> addBooking(CredentialsBookingDTO dto, String username)
             throws InvalidCredentialsException, NotExistsException {
         Credentials credentials = dto.getCredentials();
-        Booking booking = dto.getBooking();
+        System.out.println(dto);
+        List<Flight> flights = new ArrayList<Flight>();
+        for (FlightDTO flightDto: dto.getBooking().getFlights()) {
+            Flight flight = new Flight(flightDto.getOrigin(), flightDto.getDestination(), flightDto.getFlightTime(), flightDto.getOffset());
+            flightRepository.save(flight);
+            flights.add(flight);
+        }
+        Booking booking = new Booking(flights);
+        bookingRepository.save(booking);
         if (!credentials.getUsername().equals(username)) {
             throw new InvalidCredentialsException(String.format(
                     "username '%s' does not match credentials (username '%s').", username, credentials.getUsername()));
