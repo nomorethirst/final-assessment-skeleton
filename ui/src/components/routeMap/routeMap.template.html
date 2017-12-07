@@ -1,7 +1,7 @@
 <div class="routeMapContainer" layout="row" layout-align="center">
     <div class="routeMapCenter" flex-xs="100" flex-gt-xs="75" layout="column" layout-align="start" layout-padding>
         <h1 class="md-display-3">Route Map</h1>
-        <div map-lazy-load="https://maps.google.com/maps/api/js">
+        <div map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCPaV9c_ESEwHkUSOdnRXywz7iubUh5CAw">
             <ng-map center="{{routeMap.center}}" zoom="{{routeMap.zoom}}">
               <marker
                 ng-repeat="marker in routeMap.markers"
