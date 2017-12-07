@@ -7,11 +7,12 @@
                 <div flex></div>
                 <city-search-input input="search.arrive" dirty="search.arriveDirty" placeholder="Arrive"></city-search-input>
             </div>
-        <md-button class="md-raised md-primary" ng-click="search.getRoutes()" 
+        <md-button class="md-raised md-primary" ng-click="search.onClickSearch()" 
             ng-disabled="!search.departDirty || !search.arriveDirty">
             Search
         </md-button>
         </form>
+        <p ng-show="search.departDirty && search.arriveDirty && search.noResults"> Sorry, there are no routes matching this search.</p>
         <md-list>
             <md-list-item ng-repeat="route in search.routes" layout="row" layout-xs="column">
                 <div class="md-avatar">{{$index + 1}}</div>

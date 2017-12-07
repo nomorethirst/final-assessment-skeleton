@@ -1,11 +1,9 @@
 'use strict'
 
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const DashboardPlugin = require('webpack-dashboard/plugin')
-const webpackConfig = require('./webpack.config.js')
+// const webpackConfig = require('./webpack.config.js')
 
 const devtool = 'source-map'
 
@@ -17,7 +15,6 @@ const entry = {
 const output = {
   filename: '[name].js',
   path: path.resolve(__dirname) + '/../src/main/resources/static/'
-  // path: '../src/main/resources/static/'
 }
 
 const extensions = [
@@ -57,15 +54,11 @@ const rules = [{
 }]
 
 const plugins = [
-  // new ExtractTextPlugin('[name].css'),
   new HtmlWebpackPlugin({
     hash: true,
     template: './static/index.html',
     inject: 'head'
   }),
-
-  // new DashboardPlugin(),
-
   new webpack.ProvidePlugin({
     ng: 'angular',
     md: 'angular-material'

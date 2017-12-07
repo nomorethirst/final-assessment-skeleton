@@ -1,21 +1,38 @@
 <div class="routeMapContainer" layout="row" layout-align="center">
-    <div class="routeMapCenter" layout="column" layout-align="start" layout-padding>
+    <div class="routeMapCenter" flex-xs="100" flex-gt-xs="75" layout="column" layout-align="start" layout-padding>
         <h1 class="md-display-3">Route Map</h1>
-        <flight-map></flight-map>
-        <div layout="column" layout-padding>
+        <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <ng-map center="{{routeMap.center}}" zoom="{{routeMap.zoom}}">
+              <marker
+                ng-repeat="marker in routeMap.markers"
+                position="{{marker.position}}">
+              </marker>
+              <shape
+                ng-repeat="path in routeMap.paths"
+                name="polyline"
+                path="{{path.path}}"
+                stroke-color="{{path.strokeColor}}"
+                stroke-opacity="{{path.strokeOpacity}}"
+                stroke-weight="{{path.strokeWeight}}"
+                geodesic="{{path.geodesic}}">
+              </shape>
+        </ng-map>
+        </div>
+        <!-- <flight-map></flight-map> -->
+        <div layout="column" flex="80" layout-padding>
                 <div class="flight" ng-repeat="flight in routeMap.route">
-                    <div layout="row" layout-align="space-between">
+                    <div layout="row" layout-align="space-between" ng-style="{ 'color': routeMap.colors[$index] }">
                         <span>{{ flight.origin }}</span>
-                        <ng-md-icon icon="arrow_forward" size="18" style="fill:rgba(255,255,255,1.0);"></ng-md-icon>
+                        <ng-md-icon icon="arrow_forward" size="18" ng-style="{ 'fill': routeMap.colors[$index] }"></ng-md-icon>
                         <!-- <span>&emsp;->&emsp;</span> -->
                         <span>{{ flight.destination }}</span>
                     </div>
-                    <div layout="row" layout-align="space-between start">
+                    <div layout="row" layout-align="space-between start" ng-style="{ 'color': routeMap.colors[$index] }">
                     <p>( {{ flight.offset }} )</p>
                     <p>( {{ flight.offset + flight.flightTime }} )</p>
                     </div>
                 </div>
-                <div layout="column" layout-align="start center">
+                <div layout-xs="column" layout-gt-xs="row" layout-align-xs="start center" layout-align-gt-xs="space-between start">
                 <p>Total Flight Time: {{ routeMap.totalFlight }} </p>
                 <p>Total Layover Time: {{ routeMap.totalLayover }}</p>
                 </div>

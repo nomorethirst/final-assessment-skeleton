@@ -16,12 +16,12 @@ const controller = class CitySearchInputController {
       },{
         value: 'nashville',
         display: 'NASHVILLE'
+      },{ 
+        value: 'knoxville',
+        display: 'KNOXVILLE'
       },{
         value: 'chattanooga',
         display: 'CHATTANOOGA' 
-      },{ 
-        value: 'nashville',
-        display: 'NASHVILLE'
       }
     ]
     this.noCache = true
@@ -35,7 +35,7 @@ const controller = class CitySearchInputController {
   }
 
   searchTextChange(text) {
-    this.logger.info('Text changed to ' + text)
+    // this.logger.info('Text changed to ' + text)
   }
 
   selectedItemChange(item) {
@@ -44,7 +44,7 @@ const controller = class CitySearchInputController {
     } else {
       this.dirty = true
     }
-    this.logger.info('Item changed to ' + JSON.stringify(item))
+    // this.logger.info('Item changed to ' + JSON.stringify(item))
   }
 
   // /**

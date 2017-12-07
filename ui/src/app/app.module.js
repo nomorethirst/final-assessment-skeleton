@@ -1,6 +1,9 @@
+import ngMap from 'ngmap'
+
 // Constants
 import apiUrl from './api.url'
 import flightListInterval from './flight.list.interval'
+import locations from './app.locations'
 
 // Modules
 import flightMap from '../map/map.module.js'
@@ -21,6 +24,7 @@ import { RouteMap } from '../components/routeMap/routeMap.component.js'
 // Services
 import { UserService } from '../services/user.service'
 import { FlightService } from '../services/flight.service'
+import { MapService } from '../services/map.service'
 
 // Config
 import { config } from './app.config'
@@ -36,13 +40,16 @@ export default
       'ui.router',
       'ui.mask',
       'ngMdIcons',
+      'ngMap'
 
-      flightMap
+      // flightMap
     ])
     .constant('apiUrl', apiUrl)
     .constant('flightListInterval', flightListInterval)
+    .constant('locations', locations)
     .service('userService', UserService)
     .service('flightService', FlightService)
+    .service('mapService', MapService)
     .component('flightApp', appComponent)
     .component('navbar', NavBar)
     .component('home', Home)
